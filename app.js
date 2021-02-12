@@ -23,11 +23,21 @@ myImage.addEventListener("load", () => {
             const red = pixels.data[( y * 4 * pixels.width) + (x * 4)];
             const green = pixels.data[( y * 4 * pixels.width) + (x * 4 + 1)];
             const gblue = pixels.data[( y * 4 * pixels.width) + (x * 4 + 2)];
+            // javascript hoisting can call custom calculateRela..
+            const brightness = calculateRelativeBrightness(red, green, blue)
+
+            const cell = [
+                cellBrightness = brightness,
+            ]
         }
     }
 
     function calculateRelativeBrightness(red, green, blue){
-
+        return Math.sqrt(
+            (red * red) * 0.299 +
+            (green * green) * 0.587 +
+            (blue * blue) * 0.114
+        )/ 100;
     }
 
     class Particle {
