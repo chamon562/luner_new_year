@@ -12,7 +12,7 @@ myImage.addEventListener("load", () =>{
     let particlesArray = [];
     const numberOfParticles = 5000;
 
-    class Particl{
+    class Particle{
         constructor(){
             // adjust x and y to create a circle or spiral or some kind of pattern
             this.x = Math.random() * canvas.width;
@@ -34,5 +34,10 @@ myImage.addEventListener("load", () =>{
             ctx.fillStyle = "white";
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         }
+        function init(){
+            for(let i = 0; i < numberOfParticles; i++){
+                particlesArray.push(new Particle)
+            }
+        }
     }
-})
+});
