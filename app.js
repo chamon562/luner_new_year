@@ -9,10 +9,27 @@ myImage.addEventListener("load", () => {
     canvas.width = 800;
     canvas.height = 533;
     ctx.drawImage(myImage, 0, 0, canvas.width, canvas.height)
+    // getting image data for rgba
+    const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height)
+
     let particlesArray = [];
     const numberOfParticles = 5000;
 
-    
+    let mappedImage = [];
+    // using nested for loops which means loop inside of a loop
+    for(let y = 0; y < canvas.height; y++){
+        let row = [];
+        for(let x = 0; x < canvas.width){
+            const red = pixels.data[( y * 4 * pixels.width) + (x * 4)];
+            const green = pixels.data[( y * 4 * pixels.width) + (x * 4 + 1)];
+            const gblue = pixels.data[( y * 4 * pixels.width) + (x * 4 + 2)];
+        }
+    }
+
+    function calculateRelativeBrightness(red, green, blue){
+
+    }
+
     class Particle {
         constructor() {
             // adjust x and y to create a circle or spiral or some kind of pattern
